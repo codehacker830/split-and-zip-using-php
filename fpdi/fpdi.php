@@ -637,8 +637,10 @@ class FPDI extends FPDF_TPL
 					$this->xobjects[$this->xobjid]['outdata'] .= $s;
 				} else if ((!$this->InFooter) AND isset($this->footerlen[$this->page]) AND ($this->footerlen[$this->page] > 0)) {
 					// puts data before page footer
-					$pagebuff = $this->getPageBuffer($this->page);
-					$page = substr($pagebuff, 0, -$this->footerlen[$this->page]);
+                    $pagebuff = $this->getPageBuffer($this->page);
+                    
+                    $page = substr($pagebuff, 0, -$this->footerlen[$this->page]);
+                    
 					$footer = substr($pagebuff, -$this->footerlen[$this->page]);
 					$this->setPageBuffer($this->page, $page . $s . $footer);
 					// update footer position
